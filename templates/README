@@ -1,1 +1,8 @@
 # directorio de templates de imagenes cloud. Se pueden añadir tantas como se desee desde internet
+
+# ubuntu
+wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img
+# Fedora
+wget https://dl.fedoraproject.org/pub/fedora/linux/updates/20/Images/x86_64/Fedora-x86_64-20-20140407-sda.qcow2
+# Centos
+wget http://sahara-files.mirantis.com/CentOS-6.5-cloud-init.qcow2
