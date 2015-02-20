@@ -1,0 +1,25 @@
+#cloud-config
+# user ubuntu
+password: password
+ssh_pwauth: True
+chpasswd: { expire: False }
+locale: es_ES.UTF-8
+
+bootcmd:
+ - echo 192.168.2.67 alkvirt > /etc/hosts
+
+packages:
+ - puppet-common
+ - puppet
+ - ntp
+
+timezone: CET
+
+runcmd:
+ - [ ping, -c, 4, 192.168.2.67 ]
+ - [ setxkbmap, es ]
+ - [ sh, -xc, "echo 127.0.0.1 `hostname` >> /etc/hosts" ]
+ - [ sh, -xc, "echo [main] >> /etc/puppet/puppet.conf" ]
+ - [ sh, -xc, "echo server=alkvirt >> /etc/puppet/puppet.conf" ]
+ - [ puppet, agent, --enable ]
+ - [ puppet, agent, -t ]
